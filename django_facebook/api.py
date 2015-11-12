@@ -208,7 +208,7 @@ def get_facebook_graph(request=None, access_token=None, redirect_uri=None, raise
                         # it happens when users remove your
                         # permissions and then try to reauthenticate
                         logger.warn('Error when trying to convert code %s',
-                                    unicode(e))
+                                    str(e))
                         if raise_:
                             raise
                         else:
@@ -436,7 +436,7 @@ class FacebookUserConverter(object):
         data_dump_python = pformat(original_facebook_data)
         message_format = 'The following facebook data failed with error %s' \
                          '\n\n json %s \n\n python %s \n'
-        data_tuple = (unicode(e), data_dump, data_dump_python)
+        data_tuple = (str(e), data_dump, data_dump_python)
         message = message_format % data_tuple
         extra_data = {
             'data_dump': data_dump,
